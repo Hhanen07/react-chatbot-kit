@@ -22,6 +22,8 @@ interface IUseChatbotParams {
   messageHistory: IMessage[] | string;
   saveMessages: (messages: IMessage[], html: string) => any | null;
   runInitialMessagesWithHistory?: Boolean;
+  discard?: Boolean;
+  newConversation?: Boolean;
 }
 
 const useChatbot = ({
@@ -31,6 +33,8 @@ const useChatbot = ({
   messageHistory,
   runInitialMessagesWithHistory,
   saveMessages,
+  discard,
+  newConversation,
   ...rest
 }: IUseChatbotParams) => {
   let configurationError = '';
@@ -70,7 +74,8 @@ const useChatbot = ({
   });
   const messagesRef = React.useRef(state.messages);
   const stateRef = React.useRef();
-  const messageContainerRef: React.MutableRefObject<HTMLDivElement> = React.useRef();
+  const messageContainerRef: React.MutableRefObject<HTMLDivElement> =
+    React.useRef();
 
   useEffect(() => {
     messagesRef.current = state.messages;
@@ -116,6 +121,8 @@ const useChatbot = ({
       createClientMessage,
       stateRef.current,
       createCustomMessage,
+      discard,
+      newConversation,
       rest
     );
 

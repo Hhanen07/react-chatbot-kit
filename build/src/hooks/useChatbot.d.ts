@@ -9,8 +9,10 @@ interface IUseChatbotParams {
     messageHistory: IMessage[] | string;
     saveMessages: (messages: IMessage[], html: string) => any | null;
     runInitialMessagesWithHistory?: Boolean;
+    discard?: Boolean;
+    newConversation?: Boolean;
 }
-declare const useChatbot: ({ config, actionProvider, messageParser, messageHistory, runInitialMessagesWithHistory, saveMessages, ...rest }: IUseChatbotParams) => {
+declare const useChatbot: ({ config, actionProvider, messageParser, messageHistory, runInitialMessagesWithHistory, saveMessages, discard, newConversation, ...rest }: IUseChatbotParams) => {
     configurationError: string;
     invalidPropsError?: undefined;
     widgetRegistry?: undefined;

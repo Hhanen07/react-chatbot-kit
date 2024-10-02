@@ -29,6 +29,8 @@ interface IChatbotProps {
   validator?: (input: string) => Boolean;
   runInitialMessagesWithHistory?: Boolean;
   disableScrollToBottom?: boolean;
+  discard?: Boolean;
+  newConversation?: Boolean;
 }
 
 const Chatbot = ({
@@ -42,6 +44,8 @@ const Chatbot = ({
   runInitialMessagesWithHistory,
   disableScrollToBottom,
   validator,
+  discard,
+  newConversation,
   ...rest
 }: IChatbotProps) => {
   const {
@@ -62,6 +66,8 @@ const Chatbot = ({
     messageHistory,
     saveMessages,
     runInitialMessagesWithHistory,
+    discard,
+    newConversation,
     ...rest,
   });
 
@@ -104,6 +110,8 @@ const Chatbot = ({
         state={state}
         setState={setState}
         createChatBotMessage={createChatBotMessage}
+        discard={discard}
+        newConversation={newConversation}
       >
         <MessageParser>
           <Chat
